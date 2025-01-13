@@ -1,0 +1,157 @@
+.footer {
+    border-top: 20px solid rgba(238, 238, 238, 1);
+    position: relative;
+    margin: 120px auto 0;
+}
+
+.footer .small-points-footer {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+}
+
+.footer .points-right-footer {
+    position: absolute;
+    right: 30px;
+    top: 85px;
+}
+
+
+.footer .footer-info {
+    margin: 110px 0 91px 0;
+    display: flex;
+}
+
+
+.footer .footer-info .column .title,
+.footer .footer-info .column .title {
+    font-family: Josefin Sans;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+
+.footer .footer-info .column.column-1 {
+    max-width: 331px;
+    margin: 0 60px 0 0;
+}
+
+.footer .footer-info .column.column-2 {
+    margin: 0 108px 0 0;
+}
+
+.footer .footer-info .column.column-3 {
+    margin: 0 74px 0 0;
+
+}
+
+.footer .footer-info .column.column-2,
+.footer .footer-info .column.column-3 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer .footer-info .column .custom-list .item {
+    gap: 12px;
+}
+
+.footer .footer-info .column .custom-list .item::before {
+    width: 3px;
+    height: 3px;
+}
+
+.footer .footer-info .column .custom-list a,
+.footer .footer-info .column .custom-list a {
+    text-decoration: none;
+    font-family: Raleway;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #444444;
+
+}
+
+.footer .footer-info .column.column-4 {
+    max-width: 361px;
+}
+
+.footer .footer-info .column.column-4 .title {
+    margin: 0 0 16px 0;
+}
+
+.footer .footer-info .column.column-4 .newsletter-text {
+    margin: 0 0 36px 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgba(68, 68, 68, 1);
+}
+
+
+.footer .footer-info .column.column-4 .newsletter-form {
+    position: relative;
+
+}
+
+.footer .footer-info .column.column-4 .newsletter-form .input {
+    padding-right: 30px;
+}
+
+.footer .footer-info .column.column-4 .newsletter-form .send-icon {
+    position: absolute;
+    right: 0;
+}
+
+
+.footer .footer-info .column .logo {
+    margin: 0 0 25px 0;
+
+}
+
+
+.footer .footer-info .column .about-brand {
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgb(68, 68, 68, 20%);
+    margin: 0 0 35px 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgba(68, 68, 68, 1);
+}
+
+
+
+
+
+.footer .copyright {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    border-top: 1px solid rgb(68, 68, 68, 20%);
+    padding-top: 23px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgba(68, 68, 68, 1);
+
+}
+
+
+.footer .copyright .payment-method-container {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgba(68, 68, 68, 1);
+}
+
+
+.footer .copyright .payment-method-container .payment-methods {
+    display: flex;
+    gap: 8px;
+
+}
