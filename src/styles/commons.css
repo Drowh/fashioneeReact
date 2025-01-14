@@ -112,7 +112,7 @@
     display: block;
     width: 5px;
     height: 5px;
-    background-image: url("../icons/square-row.svg");
+    background-image: url("public/icons/square-row.svg");
 }
 
 .container .custom-list .item.active {
@@ -123,7 +123,7 @@
 
 .container .custom-list .item.active::before {
     content: "";
-    background-image: url("../icons/small-row.svg");
+    background-image: url("public/icons/small-row.svg");
     display: block;
     width: 25px;
     height: 3px;
