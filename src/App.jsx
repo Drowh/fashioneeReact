@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
-import Shop from './components/Shop'
-import Card from './components/Card';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import { useState } from "react";
+import Shop from "./components/Shop";
+import Card from "./components/Card";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
-import './styles/reset.css';
-import './styles/commons.css';
-
-
+import "./styles/reset.css";
+import "./styles/commons.css";
 
 const App = () => {
-
-  const [activeTab, setActiveTab] = useState('shop');
+  const [activeTab, setActiveTab] = useState("shop");
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -19,11 +16,10 @@ const App = () => {
 
   return (
     <>
-    <Header onTabChange={handleTabChange} activeTab={activeTab} />
-    {activeTab === "shop" && <Shop />}
-    {activeTab === "card" && <Card />}
-    <Footer />
-    
+      <Header onTabChange={handleTabChange} activeTab={activeTab} />
+      {activeTab === "shop" && <Shop />}
+      {activeTab === "card" && <Card />}
+      <Footer />
     </>
   );
 };
