@@ -1,4 +1,3 @@
-import React from "react";
 
 import "../Card/cart.css";
 
@@ -11,7 +10,6 @@ const Card = () => {
         <div className="cart">
           <div className="order-wrapper js-order-wrapper">
             <div className="products-list js-products-list">
-              {/** Здесь можно позже динамически выводить продукты */}
               <div className="product">
                 <div className="photo"></div>
                 <div className="product-info">

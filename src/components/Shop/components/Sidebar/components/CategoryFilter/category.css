@@ -1,0 +1,13 @@
+.shop .sidebar .sidebar-item .sidebar-title {
+    font-family: Josefin Sans;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29px;
+    text-align: left;
+    border-bottom: 2px solid rgba(0, 0, 0, 1);
+    padding-bottom: 15px;
+}
+
+.shop .sidebar .sidebar-item .sidebar-content .custom-list {
+    margin: 0 0 0 20px;
+}

@@ -1,3 +1,4 @@
+import './search.css'
 const Search = ({ onSearchChange }) => {
   return (
     <div className="search">

@@ -1,0 +1,47 @@
+.shop .sidebar .sidebar-item .sidebar-content .reviewed-products {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    cursor: pointer;
+
+}
+
+.shop .sidebar .sidebar-item .sidebar-content .reviewed-products .product {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.shop .sidebar .sidebar-item .sidebar-content .reviewed-products .product .product-image {
+    width: 75px;
+    height: 85px;
+    background: rgba(241, 242, 243, 1);
+}
+
+.shop .sidebar .sidebar-item .sidebar-content .reviewed-products .product .info {
+    max-width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.shop .sidebar .sidebar-item .sidebar-content .reviewed-products .product .name {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgba(68, 68, 68, 1);
+}
+
+.shop .sidebar .sidebar-item .sidebar-content .reviewed-products .product .info .price {
+    gap: 10px;
+}
+
+.shop .sidebar .sidebar-item .sidebar-content .reviewed-products .product .info .price .current-price {
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.shop .sidebar .sidebar-item .sidebar-content .reviewed-products .product .info .price .old-price {
+    font-size: 12px;
+    line-height: 12px;
+}

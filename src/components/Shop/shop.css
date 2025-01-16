@@ -12,155 +12,11 @@
     gap: 50px;
 }
 
-.shop .sidebar .search {
-    position: relative;
-    
-}
-
-.shop .sidebar .search .search-row {
-    padding: 0 25px 15px 0;
-    cursor: pointer;
-
-}
-
-.shop .sidebar .search .search-icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-    cursor: pointer;
-}
 
 .shop .sidebar .sidebar-item {
     display: flex;
     flex-direction: column;
     gap: 30px;
-}
-
-.shop .sidebar .sidebar-item .sidebar-title {
-    font-family: Josefin Sans;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 29px;
-    text-align: left;
-    border-bottom: 2px solid rgba(0, 0, 0, 1);
-    padding-bottom: 15px;
-}
-
-.shop .sidebar .sidebar-item .sidebar-content .custom-list {
-    margin: 0 0 0 20px;
-}
-
-
-.shop .sidebar .sidebar-item .sidebar-content .price-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    
-}
-
-.shop .sidebar .sidebar-item .sidebar-content .price-bar .input {
-    cursor: pointer;
-}
-
-.shop .sidebar .sidebar-item .sidebar-content .colors {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin: 0 0 0 20px;
-
-}
-
-
-.shop .sidebar .sidebar-item .sidebar-content .colors .color .color-checkbox {
-    position: absolute;
-    z-index: -1;
-    opacity: 0;
-}
-
-
-.shop .sidebar .sidebar-item .sidebar-content .colors .color .color-checkbox+.color-name {
-    display: inline-flex;
-    align-items: center;
-    user-select: none;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 24px;
-    color: rgb(68, 68, 68, 1);
-    cursor: pointer;
-
-}
-
-
-.shop .sidebar .sidebar-item .sidebar-content .colors .color .color-checkbox+.color-name::before {
-    content: '';
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    flex-shrink: 0;
-    flex-grow: 0;
-    border: 1px solid rgba(238, 238, 238, 1);
-    margin-right: 15px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    box-sizing: border-box;
-}
-
-.shop .sidebar .sidebar-item .sidebar-content .colors .color .color-checkbox:checked+.color-name {
-    color: rgba(255, 142, 142, 1);
-}
-
-.shop .sidebar .sidebar-item .sidebar-content .colors .color .color-checkbox:checked+.color-name::before {
-    background-image: url("../icons/check-pink.svg");
-}
-
-
-.shop .sidebar .sidebar-item .sidebar-content .reviewed-products {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    cursor: pointer;
-
-}
-
-.shop .sidebar .sidebar-item .sidebar-content .reviewed-products .product {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.shop .sidebar .sidebar-item .sidebar-content .reviewed-products .product .product-image {
-    width: 75px;
-    height: 85px;
-    background: rgba(241, 242, 243, 1);
-}
-
-.shop .sidebar .sidebar-item .sidebar-content .reviewed-products .product .info {
-    max-width: 150px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.shop .sidebar .sidebar-item .sidebar-content .reviewed-products .product .name {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    color: rgba(68, 68, 68, 1);
-}
-
-.shop .sidebar .sidebar-item .sidebar-content .reviewed-products .product .info .price {
-    gap: 10px;
-}
-
-.shop .sidebar .sidebar-item .sidebar-content .reviewed-products .product .info .price .current-price {
-    font-size: 14px;
-    line-height: 14px;
-}
-
-.shop .sidebar .sidebar-item .sidebar-content .reviewed-products .product .info .price .old-price {
-    font-size: 12px;
-    line-height: 12px;
 }
 
 
@@ -360,6 +216,10 @@
     width: 2px;
     height: 100%;
     background: rgba(0, 0, 0, 1);
+}
+
+.favorite-icon, .buy-btn {
+    cursor: pointer
 }
 
 

@@ -1,0 +1,17 @@
+.shop .sidebar .search {
+    position: relative;
+    
+}
+
+.shop .sidebar .search .search-row {
+    padding: 0 25px 15px 0;
+    cursor: pointer;
+
+}
+
+.shop .sidebar .search .search-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}

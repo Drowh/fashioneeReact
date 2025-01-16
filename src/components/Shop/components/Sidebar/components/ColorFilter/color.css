@@ -1,0 +1,50 @@
+.shop .sidebar .sidebar-item .sidebar-content .colors {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0 0 0 20px;
+
+}
+
+
+.shop .sidebar .sidebar-item .sidebar-content .colors .color .color-checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+
+.shop .sidebar .sidebar-item .sidebar-content .colors .color .color-checkbox+.color-name {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgb(68, 68, 68, 1);
+    cursor: pointer;
+
+}
+
+
+.shop .sidebar .sidebar-item .sidebar-content .colors .color .color-checkbox+.color-name::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid rgba(238, 238, 238, 1);
+    margin-right: 15px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    box-sizing: border-box;
+}
+
+.shop .sidebar .sidebar-item .sidebar-content .colors .color .color-checkbox:checked+.color-name {
+    color: rgba(255, 142, 142, 1);
+}
+
+.shop .sidebar .sidebar-item .sidebar-content .colors .color .color-checkbox:checked+.color-name::before {
+    background-image: url("../icons/check-pink.svg");
+}

@@ -9,11 +9,14 @@ import "./styles/commons.css";
 
 const App = () => {
   const [activeTab, setActiveTab] = useState("shop");
+  
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
 
+
+  
   return (
     <>
       <Header onTabChange={handleTabChange} activeTab={activeTab} />

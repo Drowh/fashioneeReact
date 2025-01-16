@@ -1,5 +1,4 @@
-
-import { useMemo } from "react";
+import { useMemo } from 'react';
 
 const useFilteredAndSortedProducts = (products, searchQuery, selectedFilters, sortType) => {
   return useMemo(() => {
@@ -18,12 +17,10 @@ const useFilteredAndSortedProducts = (products, searchQuery, selectedFilters, so
           (!selectedFilters.price ||
             !selectedFilters.price.max ||
             product.price <= parseFloat(selectedFilters.price.max));
-
         const matchesColor =
           !selectedFilters.color ||
           selectedFilters.color.length === 0 ||
           selectedFilters.color.includes(product.color);
-
         return matchesSearch && matchesCategory && matchesPrice && matchesColor;
       })
       .sort((a, b) => {
