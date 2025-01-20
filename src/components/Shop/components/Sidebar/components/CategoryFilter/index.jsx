@@ -1,4 +1,4 @@
-import './category.css'
+import './style.css'
 const CategoryFilter = ({ categories, selectedCategory, onCategoryChange }) => {
   return (
     <div className="sidebar-item">

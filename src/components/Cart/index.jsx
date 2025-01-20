@@ -1,7 +1,7 @@
 
-import "../Card/cart.css";
+import "../Cart/style.css";
 
-const Card = () => {
+const Cart = () => {
   return (
     <>
     <div className="container-active-page">
@@ -98,4 +98,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default Cart;

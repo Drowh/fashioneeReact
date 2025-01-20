@@ -1,0 +1,62 @@
+.shop .products-wrapper .products .product {
+    max-width: 262px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+
+.shop .products-wrapper .products .product .photo {
+    height: 360px;
+    /*TODO: убери жесткую величину */
+    background: #F1F2F3;
+    position: relative;
+}
+
+.shop .products-wrapper .products .product .photo .top-bar {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 222px;
+}
+
+.shop .products-wrapper .products .product .photo .top-bar .labels {
+    display: flex;
+    gap: 15px;
+}
+
+.shop .products-wrapper .products .product .photo .top-bar .labels .label {
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 10px;
+    color: rgba(255, 255, 255, 1);
+    text-transform: uppercase;
+    padding: 5px 10px;
+    background: rgb(255, 142, 142, 1);
+}
+
+.shop .products-wrapper .products .product .photo .top-bar .labels .label.new {
+    background: rgba(149, 204, 181, 1);
+}
+
+.shop .products-wrapper .products .product .photo .product-image {
+    width: 100%;
+}
+
+.shop .products-wrapper .products .product .info {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.shop .products-wrapper .products .product .name {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    color: rgba(68, 68, 68, 1);
+}

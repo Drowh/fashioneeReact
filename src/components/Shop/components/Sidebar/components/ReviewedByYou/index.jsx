@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import './reviewed.css'
+import './style.css'
 const ReviewedByYou = ({ data }) => {
   const [reviewedProducts, setReviewedProducts] = useState([]);
 

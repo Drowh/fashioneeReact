@@ -1,0 +1,27 @@
+.shop .products-wrapper .sort-and-count {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    color: rgba(68, 68, 68, 1)
+}
+
+.shop .products-wrapper .sort-and-count .bold {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 27px;
+    color: rgb(0, 0, 0, 1);
+}
+
+.shop .products-wrapper .sort-and-count .sort {
+    max-width: 262px;
+    width: 100%;
+}
+
+.shop .products-wrapper .sort-and-count .sort .input {
+    color: rgba(0, 0, 0, 1);
+    cursor: pointer;
+
+}

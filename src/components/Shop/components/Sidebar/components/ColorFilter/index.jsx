@@ -1,4 +1,4 @@
-import './color.css'
+import './style.css'
 const ColorFilter = ({ selectedColors, onColorChange }) => {
     const colors = ["Black", "Blue", "Red", "Brown", "Green"];
   

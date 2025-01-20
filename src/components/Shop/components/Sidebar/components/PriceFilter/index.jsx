@@ -1,4 +1,4 @@
-import './price.css'
+import './style.css'
 const PriceFilter = ({ price, onPriceChange }) => {
     return (
       <div className="sidebar-item">

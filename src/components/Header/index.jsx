@@ -1,27 +1,19 @@
-import '../Header/header.css';
-import { useState, useEffect } from 'react';
+import "../Header/style.css";
+import { useState } from "react";
 
 const Header = ({ onTabChange, activeTab }) => {
-  const [favoritesCount, setFavoritesCount] = useState(0);
-  const [basketCount, setBasketCount] = useState(0);
+  const [favoritesCount, setFavoritesCount] = useState(() => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    return favorites.length;
+  });
 
-  useEffect(() => {
-    updateHeaderCounts();
-  }, []);
+  const [basketCount, setBasketCount] = useState(() => {
+    const basket = JSON.parse(localStorage.getItem("basket")) || [];
+    return basket.reduce((acc, product) => acc + product.quantity, 0);
+  });
 
-  const handleClick = (tab) => { 
-    onTabChange(tab);   
-  };
-
-  const updateHeaderCounts = () => {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    const basket = JSON.parse(localStorage.getItem('basket')) || [];
-
-    let countInBasket = basket.reduce((acc, product) => acc + product.quantity, 0);
-    let countInFavorites = favorites.length;
-
-    setFavoritesCount(countInFavorites);
-    setBasketCount(countInBasket);
+  const handleClick = (tab) => {
+    onTabChange(tab);
   };
 
   return (
@@ -49,10 +41,10 @@ const Header = ({ onTabChange, activeTab }) => {
               <span>Shop</span>
             </div>
             <div
-              className={`menu-item ${activeTab === "card" ? "active" : ""}`}
-              onClick={() => handleClick("card")}
+              className={`menu-item ${activeTab === "cart" ? "active" : ""}`}
+              onClick={() => handleClick("cart")}
             >
-              <span>Card</span>
+              <span>Cart</span>
             </div>
           </div>
         </div>

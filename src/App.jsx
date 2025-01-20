@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Shop from "./components/Shop";
-import Card from "./components/Card";
+import Cart from "./components/Cart";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -21,7 +21,7 @@ const App = () => {
     <>
       <Header onTabChange={handleTabChange} activeTab={activeTab} />
       {activeTab === "shop" && <Shop />}
-      {activeTab === "card" && <Card />}
+      {activeTab === "cart" && <Cart />}
       <Footer />
     </>
   );

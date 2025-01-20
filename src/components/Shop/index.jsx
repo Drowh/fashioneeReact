@@ -3,7 +3,7 @@ import Sidebar from "./components/Sidebar";
 import Products from "./components/Products";
 import Newsletter from "./components/Newsletter";
 
-import "../Shop/shop.css";
+import "../Shop/style.css";
 
 const Shop = () => {
   const [searchQuery, setSearchQuery] = useState("");
