@@ -60,3 +60,54 @@
     line-height: 27px;
     color: rgba(68, 68, 68, 1);
 }
+
+.cart-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .cart-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cart-btn:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .quantity {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .buy-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #000; 
+    border: 2px solid #000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .buy-btn:hover {
+    background-color: #e0e0e0; 
+    color: #000;
+    border-color: #ccc 
+  }
+  
+
+  
+  

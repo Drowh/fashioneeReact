@@ -1,23 +1,19 @@
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
+import { ShopContext } from "../../../../context/ShopContext";
 import data from "../../../../products.json";
 import useFilteredAndSortedProducts from "./hooks/useFilteredAndSortedProducts";
-import useFavoriteProduct from "./hooks/useFavoriteProduct";
 import ProductCard from "../Products/components/ProductCard";
 import SortAndCount from "../Products/components/SortAndCount";
 import Pagination from "../Products/components/Pagination";
 
-const Products = ({ searchQuery, selectedCategory, selectedFilters }) => {
+const Products = ({ searchQuery, selectedFilters }) => {
   const [productCount, setProductCount] = useState(0);
   const [sortType, setSortType] = useState("Relevance");
   const [activePage, setActivePage] = useState(0);
   const [perPage, setPerPage] = useState(12);
-  const products = data.products || [];
+  const { favorites, cart } = useContext(ShopContext);
 
-  const favoriteMap = products.reduce((acc, product) => {
-    const [isFavoriteProduct, toggleFavorite] = useFavoriteProduct(product.id);
-    acc[product.id] = { isFavoriteProduct, toggleFavorite };
-    return acc;
-  }, {});
+  const products = data.products || [];
 
   const filteredAndSortedProducts = useFilteredAndSortedProducts(
     products,
@@ -27,36 +23,15 @@ const Products = ({ searchQuery, selectedCategory, selectedFilters }) => {
   );
 
   useEffect(() => {
-    setProductCount(filteredAndSortedProducts?.length || 0);
+    setProductCount(filteredAndSortedProducts.length || 0);
   }, [filteredAndSortedProducts]);
 
-  const paginatedProducts = filteredAndSortedProducts?.slice(
+  const paginatedProducts = filteredAndSortedProducts.slice(
     activePage * perPage,
     (activePage + 1) * perPage
-  ) || [];
+  );
 
-  const pageCount = Math.ceil((filteredAndSortedProducts?.length || 0) / perPage);
-
-  const handleAddToBasket = (product) => {
-    let basket = JSON.parse(localStorage.getItem("basket")) || [];
-    const existingProduct = basket.find((p) => p.id === product.id);
-    if (existingProduct) {
-      existingProduct.quantity += 1;
-    } else {
-      basket.push({ ...product, quantity: 1 });
-    }
-    localStorage.setItem("basket", JSON.stringify(basket));
-    updateHeaderCounts();
-  };
-
-  const updateHeaderCounts = () => {
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    const basket = JSON.parse(localStorage.getItem("basket")) || [];
-    let countInBasket = basket.reduce((acc, product) => acc + product.quantity, 0);
-    let countInFavorites = favorites.length;
-    document.querySelector(".js-favorites-counter").textContent = countInFavorites;
-    document.querySelector(".js-basket-counter").textContent = countInBasket;
-  };
+  const pageCount = Math.ceil(filteredAndSortedProducts.length / perPage);
 
   return (
     <section className="products-wrapper">
@@ -68,18 +43,14 @@ const Products = ({ searchQuery, selectedCategory, selectedFilters }) => {
         handleSortChange={(e) => setSortType(e.target.value)}
       />
       <div className="products">
-        {paginatedProducts.map((product) => {
-          const { isFavoriteProduct, toggleFavorite } = favoriteMap[product.id] || {};
-          return (
-            <ProductCard
-              key={product.id}
-              product={product}
-              isFavorite={isFavoriteProduct}
-              toggleFavorite={toggleFavorite}
-              handleAddToBasket={handleAddToBasket}
-            />
-          );
-        })}
+        {paginatedProducts.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            isFavorite={favorites.includes(product.id)}
+            isInCart={cart.some((item) => item.id === product.id)}
+          />
+        ))}
       </div>
       <Pagination
         activePage={activePage}

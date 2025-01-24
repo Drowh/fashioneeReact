@@ -3,6 +3,7 @@ import Shop from "./components/Shop";
 import Cart from "./components/Cart";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ShopProvider from "./context/ShopContext";
 
 import "./styles/reset.css";
 import "./styles/commons.css";
@@ -18,12 +19,12 @@ const App = () => {
 
   
   return (
-    <>
+    <ShopProvider>
       <Header onTabChange={handleTabChange} activeTab={activeTab} />
       {activeTab === "shop" && <Shop />}
       {activeTab === "cart" && <Cart />}
       <Footer />
-    </>
+      </ShopProvider>
   );
 };
 

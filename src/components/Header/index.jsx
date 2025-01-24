@@ -1,16 +1,9 @@
+import { useContext } from "react";
+import { ShopContext } from "../../context/ShopContext";
 import "../Header/style.css";
-import { useState } from "react";
 
 const Header = ({ onTabChange, activeTab }) => {
-  const [favoritesCount, setFavoritesCount] = useState(() => {
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    return favorites.length;
-  });
-
-  const [basketCount, setBasketCount] = useState(() => {
-    const basket = JSON.parse(localStorage.getItem("basket")) || [];
-    return basket.reduce((acc, product) => acc + product.quantity, 0);
-  });
+  const { favorites, cart } = useContext(ShopContext);
 
   const handleClick = (tab) => {
     onTabChange(tab);
@@ -57,11 +50,13 @@ const Header = ({ onTabChange, activeTab }) => {
           </div>
           <div className="header-icon">
             <img src="./icons/heart.svg" alt="favorites icon" />
-            <div className="counter js-favorites-counter">{favoritesCount}</div>
+            <div className="counter">{favorites.length}</div>
           </div>
           <div className="header-icon">
             <img src="./icons/cart.svg" alt="cart icon" />
-            <div className="counter js-basket-counter">{basketCount}</div>
+            <div className="counter">
+              {cart.reduce((acc, item) => acc + item.quantity, 0)}
+            </div>
           </div>
         </div>
       </header>

@@ -78,13 +78,22 @@
     cursor: pointer;
     width: 100%;
     text-align: center;
+    transition: all 0.3s ease;
 }
+
+.container .button-wrapper .button:hover {
+    background-color: #e0e0e0; 
+    color: #000;
+    border-color: #ccc 
+    
+  }
 
 .button-wrapper .vertical-line {
     width: 2px;
     height: 100%;
     background: rgba(0, 0, 0, 1);
 }
+
 
 .favorite-icon, .buy-btn {
     cursor: pointer
