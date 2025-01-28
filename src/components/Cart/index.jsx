@@ -1,130 +1,165 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ShopContext } from "../../context/ShopContext";
 import "../Cart/style.css";
 
 const Cart = () => {
   const { cart, removeFromCart, addToCart } = useContext(ShopContext);
 
+  const [promoCode, setPromoCode] = useState("");
+  const [discount, setDiscount] = useState(0);
+
+  const handlePromoCodeChange = (e) => {
+    setPromoCode(e.target.value);
+  };
+
+  const applyPromoCode = () => {
+    if (promoCode.toLowerCase() === "ilovereact") {
+      setDiscount(0.1);
+    } else {
+      setDiscount(0);
+    }
+  };
+
+  const totalPrice = cart.reduce(
+    (total, product) => total + product.price * product.quantity,
+    0
+  );
+
+  const discountAmount = totalPrice * discount;
+  const deliveryCost = 15.0;
+  const finalTotal = totalPrice - discountAmount + deliveryCost;
+
+  const handleCheckout = () => {
+    console.log("Order Details:");
+    console.log("Products:", cart);
+    console.log("Discount Applied:", discountAmount.toFixed(2));
+    console.log("Delivery Cost:", deliveryCost.toFixed(2));
+    console.log("Total Amount:", finalTotal.toFixed(2));
+  };
+
   return (
     <div className="container">
       <div className="cart">
-        <div className="order-wrapper">
-          <div className="products-list">
-            {cart.map((product) => (
-              <div className="product" key={product.id}>
-                <img
-                  className="product-image"
-                  src={product.image}
-                  alt={product.name}
-                />
-                <div className="product-info">
-                  <div className="title">{product.title}</div>
-                  <div className="price-wrapper">
-                    <div className="price-and-quantity">
-                      <div className="price">
-                      {product.oldPrice && <div className="old-price">${product.oldPrice}</div>}
-                        <div className="current-price">${product.price}</div>
+        {cart.length === 0 ? (
+          <div className="empty-cart-message">
+            <h2>
+              <u>Your cart is empty. Start adding products!</u>
+            </h2>
+          </div>
+        ) : (
+          <div className="order-wrapper">
+            <div className="products-list">
+              {cart.map((product) => (
+                <div className="product" key={product.id}>
+                  <img
+                    className="product-image"
+                    src={product.image}
+                    alt={product.name}
+                  />
+                  <div className="product-info">
+                    <div className="title">{product.title}</div>
+                    <div className="price-wrapper">
+                      <div className="price-and-quantity">
+                        <div className="price">
+                          {product.oldPrice && (
+                            <div className="old-price">${product.oldPrice}</div>
+                          )}
+                          <div className="current-price">${product.price}</div>
+                        </div>
+                        <div className="quantity">
+                          <div
+                            className="count-button"
+                            onClick={() => removeFromCart(product.id)}
+                          >
+                            -
+                          </div>
+                          <div className="count">{product.quantity}</div>
+                          <div
+                            className="count-button"
+                            onClick={() => addToCart(product)}
+                          >
+                            +
+                          </div>
+                        </div>
                       </div>
-                      <div className="quantity">
-                        <div
-                          className="count-button"
-                          onClick={() => removeFromCart(product.id)}
-                        >
-                          -
-                        </div>
-                        <div className="count">{product.quantity}</div>
-                        <div
-                          className="count-button"
-                          onClick={() => addToCart(product)}
-                        >
-                          +
-                        </div>
+                      <div className="total-price">
+                        ${(product.price * product.quantity).toFixed(2)}
                       </div>
                     </div>
-                    <div className="total-price">
-                      ${(product.price * product.quantity).toFixed(2)}
+                    <div
+                      className="close"
+                      onClick={() => removeFromCart(product.id)}
+                    >
+                      X
                     </div>
                   </div>
-                  <div
-                    className="close"
-                    onClick={() => removeFromCart(product.id)}
-                  >
-                    X
+                </div>
+              ))}
+            </div>
+
+            <div className="order">
+              <div className="title">Your Order</div>
+              <div className="order-price-wrapper">
+                <div className="price-row">
+                  <div className="name">Order price</div>
+                  <div className="price">${totalPrice.toFixed(2)}</div>
+                </div>
+                <div className="price-row">
+                  <div className="name">Discount for promo code</div>
+                  <div>${discountAmount.toFixed(2)}</div>
+                </div>
+                <div className="price-row delimiter">
+                  <div className="name">
+                    Delivery{" "}
+                    <span className="additional">(Aug 02 at 16:00)</span>
                   </div>
+                  <div className="price">${deliveryCost.toFixed(2)}</div>
+                </div>
+                <div className="price-row total">
+                  <div className="name">Total</div>
+                  <div className="price">${finalTotal.toFixed(2)}</div>
                 </div>
               </div>
-            ))}
+              <div className="button-wrapper">
+                <button className="button" onClick={handleCheckout}>
+                  Checkout
+                </button>
+              </div>
+            </div>
           </div>
+        )}
 
-          <div className="order">
-            <div className="title">Your Order</div>
-            <div className="order-price-wrapper">
-              <div className="price-row">
-                <div className="name">Order price</div>
-                <div className="price">
-                  $
-                  {cart
-                    .reduce(
-                      (total, product) =>
-                        total + product.price * product.quantity,
-                      0
-                    )
-                    .toFixed(2)}
-                </div>
-              </div>
-              <div className="price-row">
-                <div className="name">Discount for promo code</div>
-                <div>No</div>
-              </div>
-              <div className="price-row delimiter">
-                <div className="name">
-                  Delivery <span className="additional">(Aug 02 at 16:00)</span>
-                </div>
-                <div className="price">$16.00</div>
-              </div>
-              <div className="price-row total">
-                <div className="name">Total</div>
-                <div className="price">
-                  $
-                  {(
-                    cart.reduce(
-                      (total, product) =>
-                        total + product.price * product.quantity,
-                      0
-                    ) + 16
-                  ).toFixed(2)}
-                </div>
+        {cart.length > 0 && (
+          <div className="promo-code-wrapper">
+            <div className="info">
+              <div className="title">You Have A Promo Code?</div>
+              <div className="description">
+                To receive up-to-date promotional codes, subscribe to us on
+                social networks.
               </div>
             </div>
-            <div className="button-wrapper">
-              <button className="button">Checkout</button>
+            <div className="promo-code">
+              <input
+                id="promo-code-input"
+                type="text"
+                name="promo-code"
+                className="input"
+                placeholder="Enter promo code"
+                value={promoCode}
+                onChange={handlePromoCodeChange}
+              />
+              <div className="button-wrapper">
+                <button
+                  className="button"
+                  id="apply-promo-button"
+                  onClick={applyPromoCode}
+                >
+                  <img src="./icons/button-arrow.svg" alt="arrow-icon" />
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div className="promo-code-wrapper">
-          <div className="info">
-            <div className="title">You Have A Promo Code?</div>
-            <div className="description">
-              To receive up-to-date promotional codes, subscribe to us on social
-              networks.
-            </div>
-          </div>
-          <div className="promo-code">
-            <input
-              id="promo-code-input"
-              type="text"
-              name="promo-code"
-              className="input"
-              placeholder="Enter promo code"
-            />
-            <div className="button-wrapper">
-              <button className="button" id="apply-promo-button">
-                <img src="./icons/button-arrow.svg" alt="arrow-icon" />
-              </button>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
