@@ -1,24 +1,11 @@
 import { createContext, useState } from "react";
 
-export const ShopContext = createContext();
+export const CartContext = createContext();
 
-const ShopProvider = ({ children }) => {
-  const [favorites, setFavorites] = useState(
-    JSON.parse(localStorage.getItem("favorites")) || []
-  );
-
+const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem("cart")) || []
   );
-
-  const toggleFavorite = (productId) => {
-    const updatedFavorites = favorites.includes(productId)
-      ? favorites.filter((id) => id !== productId)
-      : [...favorites, productId];
-
-    setFavorites(updatedFavorites);
-    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-  };
 
   const addToCart = (product) => {
     const updatedCart = cart.some((item) => item.id === product.id)
@@ -47,18 +34,10 @@ const ShopProvider = ({ children }) => {
   };
 
   return (
-    <ShopContext.Provider
-      value={{
-        favorites,
-        cart,
-        toggleFavorite,
-        addToCart,
-        removeFromCart,
-      }}
-    >
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
       {children}
-    </ShopContext.Provider>
+    </CartContext.Provider>
   );
 };
 
-export default ShopProvider;
+export default CartProvider;

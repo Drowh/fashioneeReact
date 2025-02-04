@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from "react";
-import { ShopContext } from "../../../../context/ShopContext";
+import { FavoritesContext } from "../../../../contexts/FavoritesContext";
+import { CartContext } from "../../../../contexts/CartContext";
 import data from "../../../../products.json";
 import useFilteredAndSortedProducts from "./hooks/useFilteredAndSortedProducts";
 import ProductCard from "../Products/components/ProductCard";
@@ -11,7 +12,8 @@ const Products = ({ searchQuery, selectedFilters }) => {
   const [sortType, setSortType] = useState("Relevance");
   const [activePage, setActivePage] = useState(0);
   const [perPage, setPerPage] = useState(12);
-  const { favorites, cart } = useContext(ShopContext);
+  const { favorites } = useContext(FavoritesContext);
+  const { cart } = useContext(CartContext);
 
   const products = data.products || [];
 
@@ -56,7 +58,9 @@ const Products = ({ searchQuery, selectedFilters }) => {
         activePage={activePage}
         pageCount={pageCount}
         handlePrevPage={() => activePage > 0 && setActivePage(activePage - 1)}
-        handleNextPage={() => activePage < pageCount - 1 && setActivePage(activePage + 1)}
+        handleNextPage={() =>
+          activePage < pageCount - 1 && setActivePage(activePage + 1)
+        }
         handlePageClick={setActivePage}
       />
     </section>

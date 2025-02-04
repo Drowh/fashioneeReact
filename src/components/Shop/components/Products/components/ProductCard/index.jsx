@@ -1,11 +1,15 @@
 import { useContext } from "react";
-import { ShopContext } from "../../../../../../context/ShopContext";
+import { FavoritesContext } from "../../../../../../contexts/FavoritesContext";
+import { CartContext } from "../../../../../../contexts/CartContext";
+
 import "../ProductCard/style.css";
 
 const ProductCard = ({ product, isFavorite, isInCart }) => {
-  const { toggleFavorite, addToCart, removeFromCart, cart } = useContext(ShopContext);
+  const { toggleFavorite } = useContext(FavoritesContext);
+  const { cart, addToCart, removeFromCart } = useContext(CartContext);
 
-  const currentQuantity = cart.find((item) => item.id === product.id)?.quantity || 0;
+  const currentQuantity =
+    cart.find((item) => item.id === product.id)?.quantity || 0;
 
   return (
     <div className="product">
@@ -24,31 +28,26 @@ const ProductCard = ({ product, isFavorite, isInCart }) => {
             />
           </div>
         </div>
-        <img
-          className="product-image"
-          src={product.image}
-          alt={product.name}
-        />
+        <img className="product-image" src={product.image} alt={product.name} />
       </div>
       <div className="info">
         <div className="name">{product.name}</div>
         <div className="price">
           <div className="current-price">${product.price}</div>
-          {product.oldPrice && <div className="old-price">${product.oldPrice}</div>}
+          {product.oldPrice && (
+            <div className="old-price">${product.oldPrice}</div>
+          )}
         </div>
         {isInCart && currentQuantity > 0 ? (
           <div className="cart-controls">
             <button
               className="cart-btn"
-              onClick={() => removeFromCart(product.id)}  
+              onClick={() => removeFromCart(product.id)}
             >
               -
             </button>
             <span className="quantity">{currentQuantity}</span>
-            <button
-              className="cart-btn"
-              onClick={() => addToCart(product)}
-            >
+            <button className="cart-btn" onClick={() => addToCart(product)}>
               +
             </button>
           </div>

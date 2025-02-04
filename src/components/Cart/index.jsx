@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
-import { ShopContext } from "../../context/ShopContext";
+import { CartContext } from "../../contexts/CartContext";
+
 import "../Cart/style.css";
 
 const Cart = () => {
-  const { cart, removeFromCart, addToCart } = useContext(ShopContext);
+  const { cart, addToCart, removeFromCart } = useContext(CartContext);
 
   const [promoCode, setPromoCode] = useState("");
   const [discount, setDiscount] = useState(0);

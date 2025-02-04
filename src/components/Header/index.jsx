@@ -1,9 +1,12 @@
 import { useContext } from "react";
-import { ShopContext } from "../../context/ShopContext";
+import { FavoritesContext } from "../../contexts/FavoritesContext";
+import { CartContext } from "../../contexts/CartContext";
+
 import "../Header/style.css";
 
 const Header = ({ onTabChange, activeTab }) => {
-  const { favorites, cart } = useContext(ShopContext);
+  const { favorites } = useContext(FavoritesContext);
+  const { cart } = useContext(CartContext);
 
   const handleClick = (tab) => {
     onTabChange(tab);
