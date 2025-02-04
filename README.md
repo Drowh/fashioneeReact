@@ -52,13 +52,19 @@
 
 ## Контекст
 
-Контекст приложения (`ShopContext`) используется для управления:
+Контекст приложения (`CartContext, FavoritesContext`) используется для управления:
 - Избранными товарами.
 - Корзиной.
 
 Пример использования контекста:
 ```jsx
-const { favorites, cart, addToCart, removeFromCart } = useContext(ShopContext);
+import { useContext } from "react";
+import { FavoritesContext } from "../contexts/FavoritesContext";
+import { CartContext } from "../contexts/CartContext";
+
+const { favorites, toggleFavorite } = useContext(FavoritesContext);
+const { cart, addToCart, removeFromCart } = useContext(CartContext);
+
 ```
 
 ## Логика приложения
