@@ -3,6 +3,7 @@ import Shop from "./components/Shop";
 import Cart from "./components/Cart";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ActivePageTop from "./components/ActivePageTop"; // Импортируем компонент
 import FavoritesProvider from "./contexts/FavoritesContext";
 import CartProvider from "./contexts/CartContext";
 
@@ -19,7 +20,11 @@ const App = () => {
   return (
     <FavoritesProvider>
       <CartProvider>
-        <Header onTabChange={handleTabChange} activeTab={activeTab} />
+        <Header />
+        <ActivePageTop 
+        activePage={activeTab === "shop" ? "Shop" : "Cart"}
+        onTabChange={handleTabChange}
+         /> 
         {activeTab === "shop" && <Shop />}
         {activeTab === "cart" && <Cart />}
         <Footer />

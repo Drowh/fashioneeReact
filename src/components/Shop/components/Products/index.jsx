@@ -26,6 +26,7 @@ const Products = ({ searchQuery, selectedFilters }) => {
 
   useEffect(() => {
     setProductCount(filteredAndSortedProducts.length || 0);
+    setActivePage(0);
   }, [filteredAndSortedProducts]);
 
   const paginatedProducts = filteredAndSortedProducts.slice(

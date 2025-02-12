@@ -4,13 +4,9 @@ import { CartContext } from "../../contexts/CartContext";
 
 import "../Header/style.css";
 
-const Header = ({ onTabChange, activeTab }) => {
+const Header = () => {
   const { favorites } = useContext(FavoritesContext);
   const { cart } = useContext(CartContext);
-
-  const handleClick = (tab) => {
-    onTabChange(tab);
-  };
 
   return (
     <div className="header-container">
@@ -27,20 +23,6 @@ const Header = ({ onTabChange, activeTab }) => {
             </div>
             <div className="logo">
               <img src="icons/logo.svg" alt="logo" />
-            </div>
-          </div>
-          <div className="menu">
-            <div
-              className={`menu-item ${activeTab === "shop" ? "active" : ""}`}
-              onClick={() => handleClick("shop")}
-            >
-              <span>Shop</span>
-            </div>
-            <div
-              className={`menu-item ${activeTab === "cart" ? "active" : ""}`}
-              onClick={() => handleClick("cart")}
-            >
-              <span>Cart</span>
             </div>
           </div>
         </div>
