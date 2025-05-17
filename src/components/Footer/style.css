@@ -16,34 +16,44 @@
     top: 85px;
 }
 
-
 .footer .footer-info {
-    margin: 110px 0 91px 0;
+    margin: 50px 0 40px 0;
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 60px;
 }
 
+.footer .top-row {
+    display: flex;
+    justify-content: flex-start;
+    gap: 60px;
+}
 
-.footer .footer-info .column .title,
+.footer .bottom-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    border-top: 1px solid rgba(68, 68, 68, 0.1);
+    padding-top: 40px;
+}
+
 .footer .footer-info .column .title {
     font-family: Josefin Sans;
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
+    margin-bottom: 20px;
 }
-
 
 .footer .footer-info .column.column-1 {
     max-width: 331px;
-    margin: 0 60px 0 0;
 }
 
-.footer .footer-info .column.column-2 {
-    margin: 0 108px 0 0;
-}
-
-.footer .footer-info .column.column-3 {
-    margin: 0 74px 0 0;
-
+.footer .footer-info .links-container {
+    display: flex;
+    gap: 108px;
 }
 
 .footer .footer-info .column.column-2,
@@ -62,7 +72,6 @@
     height: 3px;
 }
 
-.footer .footer-info .column .custom-list a,
 .footer .footer-info .column .custom-list a {
     text-decoration: none;
     font-family: Raleway;
@@ -70,11 +79,11 @@
     font-weight: 400;
     line-height: 24px;
     color: #444444;
-
 }
 
 .footer .footer-info .column.column-4 {
     max-width: 361px;
+    flex: 1;
 }
 
 .footer .footer-info .column.column-4 .title {
@@ -89,10 +98,8 @@
     color: rgba(68, 68, 68, 1);
 }
 
-
 .footer .footer-info .column.column-4 .newsletter-form {
     position: relative;
-
 }
 
 .footer .footer-info .column.column-4 .newsletter-form .input {
@@ -104,16 +111,13 @@
     right: 0;
 }
 
-
 .footer .footer-info .column .logo {
     margin: 0 0 25px 0;
-
 }
-
 
 .footer .footer-info .column .about-brand {
     padding-bottom: 25px;
-    border-bottom: 1px solid rgb(68, 68, 68, 20%);
+    border-bottom: 1px solid rgba(68, 68, 68, 20%);
     margin: 0 0 35px 0;
     font-size: 14px;
     font-weight: 400;
@@ -121,23 +125,17 @@
     color: rgba(68, 68, 68, 1);
 }
 
-
-
-
-
 .footer .copyright {
     display: flex;
     justify-content: space-between;
     gap: 15px;
-    border-top: 1px solid rgb(68, 68, 68, 20%);
+    border-top: 1px solid rgba(68, 68, 68, 20%);
     padding-top: 23px;
     font-size: 14px;
     font-weight: 400;
     line-height: 24px;
     color: rgba(68, 68, 68, 1);
-
 }
-
 
 .footer .copyright .payment-method-container {
     display: flex;
@@ -149,9 +147,173 @@
     color: rgba(68, 68, 68, 1);
 }
 
-
 .footer .copyright .payment-method-container .payment-methods {
     display: flex;
     gap: 8px;
+}
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.send-button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.footer .find-us {
+    max-width: 331px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer .find-us .find-us-text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 27px;
+    margin-bottom: 12px;
+}
+
+.footer .find-us .find-us-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.footer .find-us .find-us-links .line {
+    width: 10px;
+    height: 1px;
+    background-color: #444444;
+}
+
+.footer .find-us .find-us-links .find-us-link a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(68, 68, 68, 1);
+}
+
+/* Адаптация для планшетов */
+@media screen and (max-width: 1024px) {
+  .footer {
+    margin: 80px auto 0;
+  }
+  
+  .footer .footer-info {
+    margin: 40px 0 30px 0;
+    gap: 30px;
+  }
+  
+  .footer .top-row {
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  
+  .footer .bottom-row {
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+}
+
+/* Адаптация для мобильных устройств */
+@media screen and (max-width: 768px) {
+  .footer {
+    margin: 60px auto 0;
+  }
+  
+  .footer .footer-info {
+    margin: 30px 0 30px 0;
+    gap: 30px;
+  }
+  
+  .footer .top-row {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .footer .bottom-row {
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 30px;
+  }
+  
+  .footer .footer-info .column.column-1,
+  .footer .footer-info .column.column-4,
+  .footer .find-us {
+    max-width: 100%;
+  }
+  
+  .footer .footer-info .links-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  
+  .footer .footer-info .column.column-2,
+  .footer .footer-info .column.column-3 {
+    width: calc(50% - 15px);
+  }
+  
+  .footer .points-right-footer,
+  .footer .small-points-footer {
+    display: none;
+  }
+  
+  .footer .copyright {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+    padding: 20px 0;
+  }
+}
+
+/* Дополнительная адаптация для совсем маленьких экранов */
+@media screen and (max-width: 480px) {
+  .footer .footer-info {
+    gap: 20px;
+    padding: 0 15px;
+  }
+  
+  .footer .copyright {
+    padding: 20px 15px;
+  }
+  
+  .footer .footer-info .column .title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  .footer .footer-info .column.column-2,
+  .footer .footer-info .column.column-3 {
+    gap: 15px;
+  }
+  
+  .footer .copyright .payment-method-container {
+    flex-direction: column;
+    gap: 10px;
+  }
 }

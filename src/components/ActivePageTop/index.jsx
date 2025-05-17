@@ -1,44 +1,66 @@
-export const ActivePageTop = ({ activePage, onTabChange }) => {
+import React, { memo, useCallback } from "react";
+import PropTypes from "prop-types";
+import "./style.css";
 
-  const handleClick = (tab) => {
-    onTabChange(tab);
-  };
+const ActivePageTop = ({ activePage, onTabChange }) => {
+  const handleClick = useCallback(
+    (tab) => {
+      onTabChange(tab);
+    },
+    [onTabChange]
+  );
+
   return (
     <div className="container-active-page">
       <div className="active-page-top">
         <div className="block-left">
           <div className="text-inside-blockleft">
-            <div className="title">{activePage}</div>
-            <div className="about-page">
+            <h1 className="title">{activePage}</h1>
+            <nav className="about-page" aria-label="Навигация по страницам">
               <div className="vertical-line"></div>
               <div>Home</div>
-              <div
-                className={activePage === "Shop" ? "active-page" : ""}
+              <button
+                className={
+                  activePage === "Shop" ? "active-page nav-link" : "nav-link"
+                }
                 onClick={() => handleClick("shop")}
-                style={{ cursor: "pointer"}}
+                aria-current={activePage === "Shop" ? "page" : undefined}
               >
                 Shop
-              </div>
-              <div
-                className={activePage === "Cart" ? "active-page" : ""}
+              </button>
+              <button
+                className={
+                  activePage === "Cart" ? "active-page nav-link" : "nav-link"
+                }
                 onClick={() => handleClick("cart")}
-                style={{ cursor: "pointer"}}
+                aria-current={activePage === "Cart" ? "page" : undefined}
               >
                 Cart
-              </div>
-            </div>
+              </button>
+            </nav>
           </div>
-          <img src="./icons/hr-line.svg" alt="hr-line" className="hr-line" />
+          <img
+            src="./icons/hr-line.svg"
+            alt=""
+            className="hr-line"
+            aria-hidden="true"
+          />
         </div>
         <div className="img-top-right"></div>
         <img
           src="./images/points-top.svg"
-          alt="points-top"
+          alt=""
           className="points-top"
+          aria-hidden="true"
         />
       </div>
     </div>
   );
 };
 
-export default ActivePageTop;
+ActivePageTop.propTypes = {
+  activePage: PropTypes.string.isRequired,
+  onTabChange: PropTypes.func.isRequired,
+};
+
+export default memo(ActivePageTop);

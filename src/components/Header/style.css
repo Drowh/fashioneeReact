@@ -2,22 +2,26 @@
     display: flex;
     justify-content: space-between;
     gap: 20px;
-
+    padding: 5px 15px;
 }
-
 
 .header .left-side {
     display: flex;
-    gap: 65px;
+    gap: 30px;
     align-items: center;
 }
 
 .header .left-side .logo-container {
     display: flex;
-    gap: 40px;
+    gap: 20px;
     align-items: center;
 }
 
+.header .left-side .logo-container .logo img {
+    max-width: 100%;
+    height: auto;
+    max-height: 40px;
+}
 
 .header .left-side .logo-container .burger-menu .burger-checkbox {
     position: absolute;
@@ -73,12 +77,11 @@
 
 .header .left-side .logo-container .logo {
     display: flex;
-
 }
 
 .header .left-side .menu {
     display: flex;
-    gap: 40px;
+    gap: 30px;
 }
 
 
@@ -121,13 +124,14 @@
 .header .right-side {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
 }
 
 .header .right-side .header-icon {
     display: flex;
     align-items: center;
     gap: 4px;
+    cursor: pointer;
 }
 
 .header .right-side .header-icon .counter {
@@ -138,4 +142,60 @@
     font-size: 14px;
     font-weight: 700;
     line-height: 14px;
+}
+
+@media screen and (max-width: 768px) {
+    .header-container .header {
+        padding: 10px;
+    }
+
+    .header .left-side {
+        gap: 15px;
+    }
+
+    .header .left-side .logo-container {
+        gap: 15px;
+    }
+
+    .header .left-side .logo-container .logo img {
+        max-width: 120px;
+    }
+
+    .header .right-side {
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header-container .header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 8px;
+    }
+
+    .header .left-side {
+        gap: 10px;
+    }
+
+    .header .left-side .logo-container {
+        gap: 10px;
+    }
+
+    .header .left-side .logo-container .logo img {
+        max-width: 100px;
+    }
+
+    .header .right-side {
+        gap: 12px;
+    }
+
+    .header .right-side .header-icon img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .header .right-side .header-icon .counter {
+        padding: 2px 5px;
+        font-size: 12px;
+    }
 }

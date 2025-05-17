@@ -1,5 +1,3 @@
-
-
 import "./style.css";
 
 const Newsletter = () => {
@@ -24,7 +22,6 @@ const Newsletter = () => {
             />
             <div className="button-wrapper">
               <button className="button">Subscribe</button>
-              <div className="vertical-line"></div>
             </div>
           </div>
         </form>

@@ -9,6 +9,7 @@
     flex-direction: column;
     gap: 60px;
     margin: 90px auto 0;
+    padding: 0 20px;
 }
 
 .cart .order-wrapper {
@@ -260,4 +261,129 @@
 
 .cart .promo-code-wrapper .promo-code .button-wrapper .button {
     padding: 17px 15px;
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 4px;
+  color: white;
+  font-weight: 500;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s, fadeOut 0.3s 2.7s;
+}
+
+.notification.success {
+  background-color: #4caf50;
+}
+
+.notification.error {
+  background-color: #f44336;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-20px); }
+}
+
+/* Добавляем медиа-запросы для адаптивности */
+@media screen and (max-width: 907px) {
+    .cart .order-wrapper {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .cart .order {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .cart .products-list {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cart {
+        margin: 40px auto 0;
+        padding: 0 15px;
+    }
+
+    .cart .product {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .cart .product .product-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .cart .product .product-info {
+        width: 100%;
+        padding-left: 0;
+        margin-top: 15px;
+    }
+
+    .cart .product .product-info .price-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .cart .product .product-info .close {
+        top: 15px;
+        right: 15px;
+    }
+
+    .cart .promo-code-wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .cart .promo-code-wrapper .info {
+        max-width: 100%;
+    }
+
+    .cart .promo-code-wrapper .promo-code {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .cart {
+        margin: 20px auto 0;
+        gap: 30px;
+        padding: 0 15px;
+    }
+
+    .cart .order {
+        padding: 15px;
+    }
+
+    .cart .order .title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .cart .order .button-wrapper {
+        max-width: 100%;
+    }
+
+    .cart .product .product-info .name {
+        font-size: 16px;
+    }
+
+    .notification {
+        padding: 10px;
+        font-size: 14px;
+    }
 }

@@ -1,0 +1,47 @@
+.sidebar-item {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.button {
+  padding: 12px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.apply-button {
+  background-color: #000;
+  color: #fff;
+  flex: 2;
+}
+
+.apply-button:hover {
+  background-color: #333;
+}
+
+.reset-button {
+  background-color: #f0f0f0;
+  color: #333;
+  flex: 1;
+}
+
+.reset-button:hover {
+  background-color: #e0e0e0;
+}
+
+.vertical-line {
+  height: 1px;
+  width: 100%;
+  background-color: #e0e0e0;
+  margin-top: 20px;
+} 

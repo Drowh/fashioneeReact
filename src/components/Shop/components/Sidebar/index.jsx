@@ -1,5 +1,6 @@
 import data from "../../../../products.json";
-import { useState, useCallback } from "react";
+import { useState, useCallback, memo } from "react";
+import PropTypes from "prop-types";
 import Search from "./components/Search";
 import CategoryFilter from "./components/CategoryFilter";
 import PriceFilter from "./components/PriceFilter";
@@ -8,18 +9,16 @@ import ApplyButton from "./components/ApplyButton";
 import ReviewedByYou from "./components/ReviewedByYou";
 import Banner from "./components/Banner";
 
-const Sidebar = ({
-  setSearchQuery,
-  setSelectedCategory,
-  setSelectedFilters,
-}) => {
-  const [filters, setFilters] = useState({
-    category: "ALL",
-    price: { min: "", max: "" },
-    color: [],
-  });
+const INITIAL_FILTERS = {
+  category: "ALL",
+  price: { min: "", max: "" },
+  color: [],
+};
 
-  const categoriesList = ["ALL", "Men", "Women", "Accessories", "New Arrivals"];
+const CATEGORIES_LIST = ["ALL", "Men", "Women", "Accessories", "New Arrivals"];
+
+const Sidebar = ({ setSearchQuery, setSelectedFilters }) => {
+  const [filters, setFilters] = useState(INITIAL_FILTERS);
 
   const handleSearchChange = useCallback(
     (e) => {
@@ -28,40 +27,47 @@ const Sidebar = ({
     [setSearchQuery]
   );
 
-  const handleCategoryChange = (category) => {
+  const handleCategoryChange = useCallback((category) => {
     setFilters((prevFilters) => ({ ...prevFilters, category }));
-  };
+  }, []);
 
-  const handlePriceChange = (e) => {
+  const handlePriceChange = useCallback((e) => {
     const { id, value } = e.target;
     setFilters((prevFilters) => ({
       ...prevFilters,
       price: { ...prevFilters.price, [id]: value || "" },
     }));
-  };
+  }, []);
 
-  const handleColorChange = (e) => {
+  const handleColorChange = useCallback((e) => {
     const { value, checked } = e.target;
-    const updatedColors = checked
-      ? [...filters.color, value]
-      : filters.color.filter((color) => color !== value);
+    setFilters((prevFilters) => {
+      const updatedColors = checked
+        ? [...prevFilters.color, value]
+        : prevFilters.color.filter((color) => color !== value);
 
-    setFilters({
-      ...filters,
-      color: updatedColors,
+      return {
+        ...prevFilters,
+        color: updatedColors,
+      };
     });
-  };
+  }, []);
 
-  const applyFilters = () => {
+  const applyFilters = useCallback(() => {
     setSelectedFilters(filters);
-  };
+  }, [filters, setSelectedFilters]);
+
+  const resetFilters = useCallback(() => {
+    setFilters(INITIAL_FILTERS);
+    setSelectedFilters(INITIAL_FILTERS);
+  }, [setSelectedFilters]);
 
   return (
     <aside className="sidebar">
       <Search onSearchChange={handleSearchChange} />
 
       <CategoryFilter
-        categories={categoriesList}
+        categories={CATEGORIES_LIST}
         selectedCategory={filters.category}
         onCategoryChange={handleCategoryChange}
       />
@@ -73,7 +79,7 @@ const Sidebar = ({
         onColorChange={handleColorChange}
       />
 
-      <ApplyButton onApply={applyFilters} />
+      <ApplyButton onApply={applyFilters} onReset={resetFilters} />
 
       <ReviewedByYou data={data} />
 
@@ -82,4 +88,9 @@ const Sidebar = ({
   );
 };
 
-export default Sidebar;
+Sidebar.propTypes = {
+  setSearchQuery: PropTypes.func.isRequired,
+  setSelectedFilters: PropTypes.func.isRequired,
+};
+
+export default memo(Sidebar);
